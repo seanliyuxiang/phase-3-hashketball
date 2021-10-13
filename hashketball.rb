@@ -126,4 +126,143 @@ def game_hash
   }
 end
 
+
 # Write code here
+def num_points_scored(player_name)
+  # assign game hash
+  game = game_hash
+
+  # get an array of home team players and an array of away team players
+  home_team_players_arr = game[:home][:players]
+  away_team_players_arr = game[:away][:players]
+  
+  # create an empty array to contain players from both teams
+  # shovel all players into this array
+  all_players_arr = []
+  home_team_players_arr.each { |player| all_players_arr << player }
+  away_team_players_arr.each { |player| all_players_arr << player }
+
+  # iterate through all players to find the points scored by a specific player
+  all_players_arr.each do |player|
+    if player[:player_name] == player_name
+      return player[:points]
+    end
+  end
+end
+
+
+def shoe_size(player_name)
+  # assign game hash
+  game = game_hash
+
+  # get an array of home team players and an array of away team players
+  home_team_players_arr = game[:home][:players]
+  away_team_players_arr = game[:away][:players]
+  
+  # create an empty array to contain players from both teams
+  # shovel all players into this array
+  all_players_arr = []
+  home_team_players_arr.each { |player| all_players_arr << player }
+  away_team_players_arr.each { |player| all_players_arr << player }
+
+  # iterate through all players to find the shoe size of a specific player
+  all_players_arr.each do |player|
+    if player[:player_name] == player_name
+      return player[:shoe]
+    end
+  end
+end
+
+
+def team_colors(team_name)
+  # assign game hash
+  game = game_hash
+
+  # iterate through the game hash to find the target team name and return its colors
+  game.each do |key, value|
+    if value[:team_name] == team_name
+      return value[:colors]
+    end
+  end
+end
+
+
+def team_names
+  # assign game hash
+  game = game_hash
+
+  # create an empty array to contain the team names
+  team_names_arr = []
+  game.each do |key, value|
+    team_names_arr << value[:team_name]
+  end
+
+  team_names_arr
+end
+
+
+def player_numbers(team_name)
+  # assign game hash
+  game = game_hash
+
+  # iterate through the game hash to find the target team name
+  # map through the players array of the target team
+    # to return a new array containing its players' jersey numbers
+  game.each do |key, value|
+    if value[:team_name] == team_name
+      return value[:players].map { |player| player[:number] }
+    end
+  end
+end
+
+
+def player_stats(player_name)
+  # assign game hash
+  game = game_hash
+
+  # get an array of home team players and an array of away team players
+  home_team_players_arr = game[:home][:players]
+  away_team_players_arr = game[:away][:players]
+  
+  # create an empty array to contain players from both teams
+  # shovel all players into this array
+  all_players_arr = []
+  home_team_players_arr.each { |player| all_players_arr << player }
+  away_team_players_arr.each { |player| all_players_arr << player }
+
+  # iterate through all players to find the target player
+  all_players_arr.each do |player|
+    if player[:player_name] == player_name
+      return player
+    end
+  end
+end
+
+
+def big_shoe_rebounds
+  # assign game hash
+  game = game_hash
+
+  # get an array of home team players and an array of away team players
+  home_team_players_arr = game[:home][:players]
+  away_team_players_arr = game[:away][:players]
+  
+  # create an empty array to contain players from both teams
+  # shovel all players into this array
+  all_players_arr = []
+  home_team_players_arr.each { |player| all_players_arr << player }
+  away_team_players_arr.each { |player| all_players_arr << player }
+
+  # initialize variables
+  largest_shoe_size = all_players_arr.first[:shoe]
+  rebounds = all_players_arr.first[:rebounds]
+  # iterate through all players to find the rebounds of the player with the largest shoe size
+  all_players_arr.each do |player|
+    if player[:shoe] > largest_shoe_size
+      largest_shoe_size = player[:shoe]
+      rebounds = player[:rebounds]
+    end
+  end
+
+  rebounds
+end
